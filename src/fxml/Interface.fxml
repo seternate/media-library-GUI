@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="850.0" minWidth="1280.0" prefHeight="850.0" prefWidth="1280.0" stylesheets="@../application/InterfaceStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ComboBox fx:id="searchField" editable="true" maxWidth="1.7976931348623157E308" onAction="#searchSelect" promptText="Search ..." visibleRowCount="3" VBox.vgrow="NEVER" />
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1570.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane id="TapPane" fx:id="tabPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+               <tabs>
+                  <Tab text="Movies">
+                     <content>
+                        <HBox prefHeight="3000.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="lvMovie" prefHeight="3000.0" prefWidth="523.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </content>
+                  </Tab>
+                  <Tab text="TVShows">
+                     <content>
+                        <HBox prefHeight="3000.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="lvTVShow" prefHeight="3000.0" prefWidth="350.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+            <StackPane fx:id="spInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fx:id="ivBackDrop" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+                  <HBox id="backgroundOverlay" fx:id="hboxMovies" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1208.0" StackPane.alignment="TOP_LEFT">
+                     <children>
+                        <StackPane prefHeight="792.0" prefWidth="1257.0">
+                           <children>
+                              <GridPane fx:id="gridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="500.0" minWidth="420.0" prefWidth="420.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="888.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="700.0" vgrow="ALWAYS" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView id="iv-poster" fx:id="ivPoster" fitHeight="450.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets top="20.0" />
+                                       </GridPane.margin>
+                                    </ImageView>
+                                    <Button id="ConfigButton" fx:id="btnConfig" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#openConfig" text="Config" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Label id="title" fx:id="lblTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Title" VBox.vgrow="ALWAYS">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="36.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets right="25.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Button id="playMovie" fx:id="btnPlayMovie" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playMovie" text="Play Movie">
+                                                         <HBox.margin>
+                                                            <Insets top="15.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <Button id="playTrailer" fx:id="btnPlayTrailer" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#playTrailer" prefHeight="25.0" prefWidth="82.0" text="Play Trailer">
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <Button id="watched" fx:id="btnWatched" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#btnWatched" prefHeight="27.0" prefWidth="107.0" text="Watched">
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Label styleClass="text-header" text="Handlung" VBox.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="lblOverview" alignment="TOP_LEFT" lineSpacing="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="text-normal" text="Overview" wrapText="true" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets right="25.0" top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label styleClass="text-header" text="Information" VBox.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                                                <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                                                <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="91.0" vgrow="ALWAYS" />
+                                                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="150.0" vgrow="ALWAYS" />
+                                             </rowConstraints>
+                                             <children>
+                                                <VBox prefHeight="110.0" prefWidth="352.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="82.0" styleClass="text-header-low" text="Runtime">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblRuntime" alignment="TOP_LEFT" prefHeight="66.0" prefWidth="225.0" styleClass="text-normal" text="lblRuntime">
+                                                         <font>
+                                                            <Font name="Arial" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="82.0" styleClass="text-header-low" text="Budget">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblBudget" alignment="TOP_LEFT" prefHeight="67.0" prefWidth="219.0" styleClass="text-normal" text="lblBudget">
+                                                         <font>
+                                                            <Font name="Arial" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="216.0" styleClass="text-header-low" text="Release Date">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblReleaseDate" alignment="TOP_LEFT" prefHeight="58.0" prefWidth="230.0" styleClass="text-normal" text="lblReleaseDate">
+                                                         <font>
+                                                            <Font name="Arial" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="82.0" styleClass="text-header-low" text="Revenue">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblRevenue" alignment="TOP_LEFT" prefHeight="98.0" prefWidth="219.0" styleClass="text-normal" text="lblRevenue">
+                                                         <font>
+                                                            <Font name="Arial" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="82.0" styleClass="text-header-low" text="Genre">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblGenre" alignment="TOP_LEFT" prefHeight="129.0" prefWidth="222.0" styleClass="text-normal" text="lblGenre" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="32.0" prefWidth="228.0" styleClass="text-header-low" text="Production Companies">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblProductionCompanies" alignment="TOP_LEFT" prefHeight="121.0" prefWidth="201.0" styleClass="text-normal" text="lblProductionCompanies" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets right="25.0" top="20.0" />
+                                             </VBox.margin>
+                                          </GridPane>
+                                       </children>
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                              <ListView fx:id="lvSeason" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" visible="false" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+                  <WebView fx:id="wvTrailer" onKeyPressed="#exitTrailer" prefHeight="-1.0" prefWidth="-1.0" visible="false" />
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
